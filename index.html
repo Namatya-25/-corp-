@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>架空コーポレートサイト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d4772c3c4b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="CSS/ress.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <header id="header" class="container">
+        <div class="left-content">
+            <img src="img/logo.png" alt="logo" class="logo">
+        </div>
+        <div class="right-content">
+            <div class="navigation-container">
+                <ul class="navigation">
+                    <li><a href="#">お知らせ</a></li>
+                    <li><a href="#">企業理念</a></li>
+                    <li><a href="#">事業内容</a></li>
+                    <li><a href="#">会社実績</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+            </div>
+
+            <div class="open-bg">
+                <div class="img-container">
+                    <img src="img/logo.png" alt="logo">
+                </div>
+                <ul>
+                    <li><a href="">お知らせ</a></li>
+                    <li><a href="">企業理念</a></li>
+                    <li><a href="">事業内容</a></li>
+                    <li><a href="">会社実績</a></li>
+                    <li><a href="">お問い合わせ</a></li>
+                </ul>
+            </div>
+
+            <!-- ハンバーガーメニュー -->
+            <button id="menuButton" type="button" class="menu-button" aria-labelledby="menuButtonLabel">
+                <span class="menu-button__line">
+                    <span id="menuButtonLabel" style="display: none">メニューボタン</span>
+                </span>
+            </button>
+        </div>
+    </header>
+    <section id="mainvisual">
+        <div class="mainvisual-content container">
+            <picture>
+                <source srcset="img/mainvisual-text-pc.png" media="(min-width: 400px)">
+                <img src="img/mainvisual text sp.png" alt="株式会社 SKYINFO">
+            </picture>
+        </div>
+    </section>
+    <section id="news" class="container">
+        <div class="title-content">
+            <h1 class="section-title">News</h1>
+            <h3 class="section-subtitle">お知らせ</h3>
+        </div>
+        <ul class="news-list">
+            <li>
+                <span class="date">2026/1/15</span>
+                <span class="label">お知らせ</span>
+                <a href="#" class="text">サイトをリニューアルしました。</a>
+            </li>
+            <li>
+                <span class="date">2026/1/20</span>
+                <span class="label">お知らせ</span>
+                <a href="#" class="text">【新機能】「AIチャットサジェスト機能」をリリースしました！</a>
+            </li>
+            <li>
+                <span class="date">2026/1/24</span>
+                <span class="label">お知らせ</span>
+                <a href="#" class="text">【重要】システムメンテナンスに伴うサービス一時停止のお知らせ</a>
+            </li>
+        </ul>
+    </section>
+    <section id="concept">
+        <div class="container">
+            <div class="concept-left-content">
+                <div class="title-content">
+                    <h1 class="section-title">Concept</h1>
+                    <h3 class="section-subtitle">企業理念</h3>
+                </div>
+                <h1 class="title">「技術で、想いを形にする」</h1>
+                <p>私たちは単なるシステム開発ではなく、お客様のビジネスに寄り添うパートナーでありたい。課題の本質を見極め、最適なソリューションを提案します。</p>
+                <div class="btn-content">
+                    <a href="#" class="view-more-btn">
+                        VIEW MORE
+                        <span class="arrow"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="concept-right-content">
+                <div class="blue-bg"></div>
+                <div class="main-img">
+                    <img src="img/concept img.jpg" alt="meeting">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="service">
+        <div class="bg-blue-box"></div>
+        <div class="container">
+            <div class="title-content">
+                <h1 class="section-title">Service</h1>
+                <h3 class="section-subtitle">事業内容</h3>
+            </div>
+            <div class="l-service-">
+                <section class="service-section">
+                    <div class="service-container">
+                        <div class="service-list">
+                            <div class="service-item reverse">
+                                <div class="service-image">
+                                    <img src="img/service web application img.jpg" alt="Webシステム開発">
+                                </div>
+                                <div class="service-content">
+                                    <p class="en-title">Web application</p>
+                                    <h3 class="jp-title">Webシステム開発</h3>
+                                    <p class="description">
+                                        顧客管理（CRM）や予約システム、独自の社内ツールなど、ブラウザ上で動作する高機能なシステムを開発します。最新技術を用い、拡張性とセキュリティを両立させた設計を行います。
+                                    </p>
+                                    <a href="#" class="view-more">
+                                        VIEW MORE<i class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <div class="service-image">
+                                    <img src="img/mobile app img.jpg" alt="モバイルアプリ開発">
+                                </div>
+                                <div class="service-content">
+                                    <p class="en-title">Mobile app</p>
+                                    <h3 class="jp-title">モバイルアプリ開発</h3>
+                                    <p class="description">
+                                        iOS/Android両対応のアプリを開発。直感的な操作性（UI/UX）にこだわり、エンドユーザーに長く愛されるアプリを、企画段階から共に作り上げます。</p>
+                                    <a href="#" class="view-more">
+                                        VIEW MORE<i class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="service-item reverse">
+                                <div class="service-image">
+                                    <img src="img/Infrastructure setup img.jpg" alt="クラウドインフラ構築">
+                                </div>
+                                <div class="service-content">
+                                    <p class="en-title infra-title">Infrastructure setup</p>
+                                    <h3 class="jp-title">クラウドインフラ構築</h3>
+                                    <p class="description">
+                                        AWSやGCPなどのクラウド環境を活用し、負荷に強く安全なインフラを構築。コスト最適化と保守性の向上を同時に実現し、企業の成長を足元から支えます。</p>
+                                    <a href="#" class="view-more">
+                                        VIEW MORE<i class="fa-solid fa-chevron-right"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <section id="works">
+        <div class="title-content">
+            <h1 class="section-title">Works</h1>
+            <h3 class="section-subtitle">会社実績</h3>
+        </div>
+        <div class="container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide card">
+                        <div class="case-label">CASE 1</div>
+                        <div class="card-content">
+                            <h3 class="card-title">煩雑な勤怠管理の<br>自動化と工数削減</h3>
+                            <div class="tag tag-issue">課題</div>
+                            <p class="text">拠点 milk が複数あり、紙やExcelでの打刻管理が限界。集計ミスや未払い残業のリスクがある。</p>
+                            <div class="tag tag-solution">解決策</div>
+                            <p class="text">スマホ打刻と自動集計を導入。リアルタイムで残業時間を可視化し、アラート機能でコンプライアンスを強化。</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide card">
+                        <div class="case-label">CASE 2</div>
+                        <div class="card-content">
+                            <h3 class="card-title">実店舗のファン化を<br>促進する公式アプリ開発</h3>
+                            <div class="tag tag-issue">課題</div>
+                            <p class="text">紙のポイントカードやチラシでは若年層にリーチできず、再来店率（リピート率）が伸び悩んでいる。</p>
+                            <div class="tag tag-solution">解決策</div>
+                            <p class="text">会員証・クーポン・PUSH通知を統合したアプリを構築。属性に合わせたセグメント配信により、再来店率を25%向上。</p>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide card">
+                        <div class="case-label">CASE 3</div>
+                        <div class="card-content">
+                            <h3 class="card-title">オンプレミスからAWS<br>への全面移行</h3>
+                            <div class="tag tag-issue">課題</div>
+                            <p class="text">自社サーバーの老朽化により故障リスクが増大。保守運用のためにエンジニアが深夜・休日に対応する負担が重くなっている。</p>
+                            <div class="tag tag-solution">解決策</div>
+                            <p class="text">AWSへのクラウド移行によりハードウェア保守を撤廃。オートスケーリング機能でアクセス急増時も安定稼働し、運用負荷を70%削減。</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-button-next is-mobile"></div>
+                <div class="swiper-button-prev is-mobile"></div>
+            </div>
+        </div>
+    </section>
+    <section id="contact"></section>
+    <footer id="footer"></footer>
+</body>
+
+</html>

@@ -1,0 +1,815 @@
+/*----- 初期設定 -------*/
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --base-text: #333;
+  --news-accent: #D9DFEF;
+  --arrow-color: #6F8DD1;
+  --btn-bg: #CFE2FF;
+  --pagination-bg: #99AEDE;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+
+/* コンポーネント */
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.title-content {
+  padding-top: clamp(80px, 15vw, 130px);
+  padding-bottom: 5vw;
+}
+
+.section-title {
+  color: var(--base-text);
+  line-height: 1;
+  font-size: clamp(45px, 10vw, 100px);
+}
+
+.section-subtitle {
+  color: var(--base-text);
+  font-size: clamp(10px, 3vw, 22px);
+  margin-top: 5px;
+}
+
+
+
+
+/* ハンバーガーメニュー */
+
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 6px;
+  position: relative;
+  z-index: 150;
+}
+
+.menu-button__line,
+.menu-button::before,
+.menu-button::after {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background-color: #333333;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-button.is-opened .menu-button__line {
+  opacity: 0;
+}
+
+.menu-button.is-opened::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-button.is-opened::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+
+
+/*--------------header------------------*/
+
+#header {
+  height: clamp(70px, 15vw, 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header .logo {
+  width: clamp(156px, 30vw, 290px);
+}
+
+.navigation-container {
+  display: none;
+  opacity: 0;
+}
+
+.navigation {
+  display: flex;
+  gap: clamp(15px, 2.5vw, 25px);
+}
+
+.navigation a {
+  color: var(--base-text);
+  font-weight: 500;
+  font-size: clamp(13px, 2vw, 18px);
+}
+
+.open-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: clamp(250px, 80vw, 960px);
+  height: 100vh;
+  background: rgb(235, 245, 248);
+  padding: 0 20px;
+  transition: .3s;
+  z-index: 101;
+
+  /* 修正ポイントここから */
+  transform: translateX(100%);
+  /* 400pxより100%の方が確実 */
+  visibility: hidden;
+  /* display: noneの代わり */
+  opacity: 0;
+  /* 透明にしておく */
+}
+
+.open-bg .img-container {
+  border-bottom: 1px solid #8B8B8B;
+}
+
+.open-bg img {
+  width: clamp(156px, 20vw, 180px);
+  padding: 25px 0 20px 0;
+}
+
+.open-bg li {
+  padding: 12px 0;
+  border-bottom: 1px solid #8B8B8B;
+}
+
+.open-bg a {
+  color: var(--base-text);
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.open-bg.active {
+  transform: translateX(0);
+  visibility: visible;
+  /* 見えるようにする */
+  opacity: 1;
+  /* 不透明にする */
+}
+
+.bodyover {
+  overflow: hidden;
+}
+
+
+/* 黒い膜 */
+.bodybg::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* ここで暗さを指定 */
+  z-index: 100;
+  /* メニュー(nav)よりは低く、他のコンテンツより高い数値 */
+  pointer-events: none;
+  /* 下の要素のクリックを邪魔しない（必要に応じて） */
+}
+
+
+
+/*--------------mainvisual------------------*/
+
+#mainvisual {
+  background-image: url(../img/mainvisual.jpg);
+  width: 100%;
+  height: clamp(400px, 50vw, 750px);
+  background-size: cover;
+  background-position: center;
+  object-fit: contain;
+}
+
+
+.mainvisual-content {
+  position: relative;
+}
+
+.mainvisual-content img {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+}
+
+
+
+
+
+/*--------------news------------------*/
+
+#news {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(65px, 6.76vw + 38.4px, 125px);
+}
+
+.news-list li {
+  border-bottom: 1px solid #eee;
+  padding-top: clamp(10px, 1.13vw + 5.57px, 20px);
+  padding-bottom: clamp(10px, 1.13vw + 5.57px, 20px);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-list li:first-child {
+  padding-top: 0;
+}
+
+.news-list li:last-child {
+  padding-bottom: 0;
+  border: none;
+}
+
+.news-list .date {
+  color: var(--base-text);
+  font-size: clamp(10px, 1.5vw, 16px);
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.news-list .label {
+  margin: 0 10px;
+  color: var(--base-text);
+  font-size: clamp(10px, 1.5vw, 16px);
+  font-weight: 500;
+  padding: 2px 13px;
+  background-color: var(--news-accent);
+  vertical-align: middle;
+}
+
+.news-list .text {
+  color: var(--base-text);
+  font-size: clamp(10px, 1.5vw, 16px);
+  font-weight: 500;
+  text-decoration: underline solid;
+  display: block;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+/*--------------concept------------------*/
+
+#concept {
+  background-image: linear-gradient(#d9efea, #d9dfef 18%, #e3f4f6 34%, #a4b6e099 100%);
+  position: relative;
+  padding-bottom: clamp(72px, 1.417vw + 66.43px, 215px);
+}
+
+.concept-left-content {
+  padding-bottom: 60px;
+}
+
+.concept-left-content .title {
+  color: var(--base-text);
+  font-size: clamp(26px, 4vw, 40px);
+  text-indent: -0.5em;
+  padding-bottom: clamp(13px, 3vw, 35px);
+}
+
+.concept-left-content p {
+  color: var(--base-text);
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 2;
+  letter-spacing: 1.8px;
+  padding-right: 40px;
+  margin-bottom: 25px;
+}
+
+.concept-left-content .btn {
+  color: var(--base-text);
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+/* 矢印 */
+
+.view-more-btn {
+  /* レイアウトの基本 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  /* サイズと形 */
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
+  /* 上下と左右の余白 */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  /* 薄い境界線（必要に応じて） */
+  border-radius: 100px;
+  /* 十分に大きくするとカプセル型になります */
+
+  /* テキストの装飾 */
+  color: #333333;
+  font-family: sans-serif;
+  font-size: clamp(12px, 2vw, 17px);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  /* 文字の間隔を広げるのがコツ */
+}
+
+/* 右側の矢印（>） */
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 12px;
+  border-top: 2px solid #7a8ecf;
+  /* 矢印の色（青みがかったグレー） */
+  border-right: 2px solid #7a8ecf;
+  transform: rotate(45deg);
+  /* 四角形を45度回転させて「>」にする */
+}
+
+.concept-right-content {
+  position: relative;
+  display: inline-block;
+  /* 中身のサイズに合わせる */
+  padding-top: clamp(90px, 7.89vw + 59px, 160px);
+  /* 青い四角が上に突き出る分の余白 */
+  padding-right: 60px;
+  /* 青い四角が右に突き出る分の余白 */
+}
+
+/* 背景の青い四角 */
+.blue-bg {
+  position: absolute;
+  top: 0;
+  /* 一番上から配置 */
+  right: 0;
+  /* 一番右から配置 */
+  width: 70%;
+  /* 写真の横幅に対してのサイズ */
+  height: clamp(240px, 24.8vw + 142.5px, 400px);
+  /* 写真の縦幅に対してのサイズ */
+  background-color: #8da3d9;
+  z-index: 1;
+  /* 背面へ */
+}
+
+/* メインの写真 */
+.main-img {
+  position: relative;
+  z-index: 2;
+  /* 青い四角より上へ */
+  line-height: 0;
+  /* 下の隙間消し */
+}
+
+.main-img img {
+  width: 100%;
+  /* 親の幅いっぱいに */
+  max-width: 500px;
+  /* 任意のサイズ */
+  border-radius: 8px;
+  /* 角丸 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* 軽い影 */
+}
+
+#concept .container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+/*--------------service------------------*/
+
+#service {
+  position: relative;
+}
+
+.service-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 背景の青いボックス */
+.bg-blue-box {
+  position: absolute;
+  top: 500px;
+  bottom: 250px;
+  right: 0;
+  width: 100%;
+  background-color: #a5b4dc;
+  z-index: 1;
+}
+
+/* 各アイテムの並び（デフォルトで縦並び） */
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 中央寄せ */
+  margin-bottom: clamp(80px, 58.98px + 5.35vw, 100px);
+}
+
+.service-item .en-title {
+  font-family: "Arizonia", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(18px, 14.45px + 0.9vw, 26px);
+  color: #4F5F84;
+}
+
+.service-item .jp-title {
+  font-family: sans-serif;
+  margin: 0px 0 12px 0;
+  font-size: clamp(20px, 14.23px + 1.47vw, 30px);
+}
+
+.service-item .description {
+  font-size: clamp(10px, 7.78px + 0.56vw, 15px);
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+
+
+/* 画像エリア */
+.service-image {
+  width: 100%;
+}
+
+.service-image img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* テキストカード（画像の上に少し重ねる） */
+.service-content {
+  width: 90%;
+  background: #fff;
+  /* 上下: 40px~65px / 左右: 45px~85px */
+  padding: clamp(40px, 28.918px + 2.819vw, 65px) clamp(45px, 27.272px + 4.51vw, 85px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-top: clamp(-130px, calc(-80px + (-130 - -80) * ((100vw - 393px) / (767 - 393))), -80px);
+  /* 上方向にネガティブマージン */
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.view-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #d1e2ff;
+  /* 薄い青色 */
+  padding: 5px 18px;
+  /* 少しゆとりを持たせる */
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 10px;
+  /* 文字サイズ調整 */
+  font-family: sans-serif;
+  color: #444;
+  /* 文字色は少し濃いめのグレー */
+  transition: 0.3s;
+  position: relative;
+  margin-left: auto;
+  margin-top: 40px;
+}
+
+.fa-solid {
+  color: #6F8DD1;
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------works------------------*/
+
+#works .title-content {
+  text-align: center;
+}
+
+#works {
+  background: 
+    linear-gradient(180deg, rgba(248, 250, 255, 0.3) 0%, rgba(219, 234, 254, 0.8) 100%),
+    url(../img/works\ blue\ waves.png);
+  padding: 80px 0; /* 上下の余白を少し広めに */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden; /* 横揺れ防止 */
+}
+
+/* --- カードのデザイン --- */
+.mySwiper {
+  padding: 40px 7px 40px !important; /* ラベルの飛び出しと影のための余白 */
+}
+
+.card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto !important;
+}
+
+.case-label {
+  background: #333;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  position: absolute;
+  top: -30px; /* カードの上に浮かせる */
+  left: 0;
+  z-index: 10;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.card-content {
+  padding: 40px 20px 30px;
+  text-align: left;
+  flex-grow: 1; /* 中身の高さに関わらずカードを伸ばす */
+}
+
+.card-title {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+
+.tag-issue { background: var(--accent-purple); color: #6366f1; }
+.tag-solution { background: var(--accent-red); color: #ef4444; }
+
+.text {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* --- ナビゲーションボタン（矢印） --- */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #a5b4fc; /* 画像のような薄い青色 */
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;        /* 円形にする */
+  color: #fff !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px !important; /* 矢印の大きさ */
+  font-weight: bold;
+}
+
+/* スマホ時：ボタンをカードの外側に配置 */
+@media (max-width: 1023px) {
+  .container {
+    padding: 0 40px; /* 左右にボタン用の余白 */
+  }
+  .swiper-button-prev { left: 0px; }
+  .swiper-button-next { right: 0px; }
+}
+
+/* --- PC用レイアウト (1024px以上) --- */
+@media (min-width: 1024px) {
+  .mySwiper {
+    overflow: visible !important; /* PCではスライダー感を消す場合 */
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    transform: none !important; /* Swiperの移動を無効化 */
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    width: calc(33.333% - 14px) !important;
+    margin-right: 0 !important;
+    height: auto !important;
+  }
+
+  /* PCでは矢印を隠す */
+  .is-mobile {
+    display: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 400px) {
+  .mainvisual-content img {
+    width: clamp(350px, 80vw, 900px);
+  }
+
+
+}
+
+
+@media (min-width: 768px) {
+
+  .navigation-container {
+    display: block;
+    opacity: 1;
+  }
+
+  .menu-button {
+    display: none;
+    opacity: 0;
+  }
+
+  #news {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .news-list {
+    margin: 0 auto;
+  }
+
+  .news-list .date {
+    vertical-align: middle;
+  }
+
+  .news-list .label {
+    vertical-align: middle;
+  }
+
+  .news-list .text {
+    display: inline-block;
+    margin-top: 0px;
+    vertical-align: middle;
+  }
+
+  #concept .container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .concept-left-content {
+    flex: 1;
+  }
+
+  .concept-right-content {
+    flex: 1;
+  }
+
+  .concept-left-content {
+    padding-bottom: 0px;
+  }
+
+  .bg-blue-box {
+    top: 650px;
+    width: 70%;
+    height: 1000px;
+  }
+
+  .service-item {
+    flex-direction: row;
+    /* 横並びに戻す */
+    align-items: center;
+    margin-bottom: 120px;
+  }
+
+  /* クラス「reverse」が付いている場合は右から左へ */
+  .service-item.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .service-image {
+    width: 60%;
+  }
+
+  .service-content {
+    width: 45%;
+    padding: 60px 40px;
+    margin-top: 0;
+    /* スマホ用の重なりをリセット */
+    margin-left: -10%;
+    /* 横方向の重なりに変更 */
+  }
+
+  /* 反転時は左ではなく右にネガティブマージン */
+  .service-item.reverse .service-content {
+    margin-left: 0;
+    margin-right: -10%;
+  }
+  
+}
