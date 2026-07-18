@@ -1,5 +1,9 @@
 /*----- 初期設定 -------*/
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -36,6 +40,7 @@ ul {
   --arrow-color: #6F8DD1;
   --btn-bg: #CFE2FF;
   --pagination-bg: #99AEDE;
+  --footer-bg: #6C7EAC;
 }
 
 body {
@@ -248,8 +253,12 @@ body {
   border-bottom: 1px solid #eee;
   padding-top: clamp(10px, 1.13vw + 5.57px, 20px);
   padding-bottom: clamp(10px, 1.13vw + 5.57px, 20px);
-  display: flex;
-  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .text {
+    margin-bottom: 0 !important;
+  }
 }
 
 .news-list li:first-child {
@@ -821,6 +830,99 @@ body {
 
 
 
+
+
+
+
+
+/* footer */
+
+#footer {
+  background-color: var(--footer-bg);
+  color: #fff;
+  position: relative;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  /* モバイル：縦並び */
+  gap: 30px;
+}
+
+.footer-info .logo {
+  width: clamp(180px, 20vw, 240px);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 20px;
+  padding: 40px 0;
+}
+
+.footer-info p,
+br,
+small {
+  opacity: 0.7;
+  font-size: clamp(9px, 2vw, 16px);
+}
+
+.footer-nav a {
+  font-size: clamp(14px, 2vw, 22px);
+  opacity: 0.7;
+  color: #fff;
+}
+
+.top-button {
+  width: 50px;
+  height: 50px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-decoration: none;
+
+  position: absolute;
+  right: 20px;
+  /* 左からの距離 */
+  bottom: 20px;
+  /* 下からの距離 */
+}
+
+.top-button .arrow {
+  transform: rotate(-45deg);
+  margin-left: 1px;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  font-size: clamp(9px, 2vw, 16px);
+  opacity: 0.7;
+}
+
+/* PC向け設定（画面幅768px以上） */
+@media (min-width: 768px) {
+  #footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-nav {
+    flex-direction: row;
+    order: 2;
+    /* 順序を入れ替える */
+  }
+
+  .footer-info {
+    padding-top: clamp(0px, 5vw, 70px);
+  }
+}
 
 
 
