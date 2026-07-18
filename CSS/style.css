@@ -30,6 +30,7 @@ ul {
 }
 
 :root {
+  --contact-text: #000;
   --base-text: #333;
   --news-accent: #D9DFEF;
   --arrow-color: #6F8DD1;
@@ -559,23 +560,26 @@ body {
 }
 
 #works {
-  background: 
+  background:
     linear-gradient(180deg, rgba(248, 250, 255, 0.3) 0%, rgba(219, 234, 254, 0.8) 100%),
     url(../img/works\ blue\ waves.png);
-  padding: 80px 0; /* 上下の余白を少し広めに */
+  padding: 80px 0;
+  /* 上下の余白を少し広めに */
   font-family: "Helvetica Neue", Arial, sans-serif;
-  overflow: hidden; /* 横揺れ防止 */
+  overflow: hidden;
+  /* 横揺れ防止 */
 }
 
 /* --- カードのデザイン --- */
 .mySwiper {
-  padding: 40px 7px 40px !important; /* ラベルの飛び出しと影のための余白 */
+  padding: 40px 7px 40px !important;
+  /* ラベルの飛び出しと影のための余白 */
 }
 
 .card {
   background: #fff;
   border-radius: 4px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -590,7 +594,8 @@ body {
   font-weight: bold;
   font-size: 16px;
   position: absolute;
-  top: -30px; /* カードの上に浮かせる */
+  top: -30px;
+  /* カードの上に浮かせる */
   left: 0;
   z-index: 10;
   border-top-left-radius: 7px;
@@ -600,7 +605,8 @@ body {
 .card-content {
   padding: 40px 20px 30px;
   text-align: left;
-  flex-grow: 1; /* 中身の高さに関わらずカードを伸ばす */
+  flex-grow: 1;
+  /* 中身の高さに関わらずカードを伸ばす */
 }
 
 .card-title {
@@ -619,8 +625,15 @@ body {
   border-radius: 2px;
 }
 
-.tag-issue { background: var(--accent-purple); color: #6366f1; }
-.tag-solution { background: var(--accent-red); color: #ef4444; }
+.tag-issue {
+  background: var(--accent-purple);
+  color: #6366f1;
+}
+
+.tag-solution {
+  background: var(--accent-red);
+  color: #ef4444;
+}
 
 .text {
   font-size: 14px;
@@ -632,39 +645,51 @@ body {
 /* --- ナビゲーションボタン（矢印） --- */
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: #a5b4fc; /* 画像のような薄い青色 */
+  background-color: #a5b4fc;
+  /* 画像のような薄い青色 */
   width: 40px !important;
   height: 40px !important;
-  border-radius: 50%;        /* 円形にする */
+  border-radius: 50%;
+  /* 円形にする */
   color: #fff !important;
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-size: 18px !important; /* 矢印の大きさ */
+  font-size: 18px !important;
+  /* 矢印の大きさ */
   font-weight: bold;
 }
 
 /* スマホ時：ボタンをカードの外側に配置 */
 @media (max-width: 1023px) {
   .container {
-    padding: 0 40px; /* 左右にボタン用の余白 */
+    padding: 0 40px;
+    /* 左右にボタン用の余白 */
   }
-  .swiper-button-prev { left: 0px; }
-  .swiper-button-next { right: 0px; }
+
+  .swiper-button-prev {
+    left: 0px;
+  }
+
+  .swiper-button-next {
+    right: 0px;
+  }
 }
 
 /* --- PC用レイアウト (1024px以上) --- */
 @media (min-width: 1024px) {
   .mySwiper {
-    overflow: visible !important; /* PCではスライダー感を消す場合 */
+    overflow: visible !important;
+    /* PCではスライダー感を消す場合 */
   }
-  
+
   .swiper-wrapper {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    transform: none !important; /* Swiperの移動を無効化 */
+    transform: none !important;
+    /* Swiperの移動を無効化 */
     align-items: stretch;
   }
 
@@ -688,6 +713,109 @@ body {
 
 
 
+
+
+
+/* Contact */
+
+@media (min-width: 768px) {
+  #contact .flex-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contact-left-content {
+    width: 40%;
+  }
+
+  .contact-right-content {
+    width: 55%;
+  }
+}
+
+.contact-left-content p {
+  color: var(--base-text);
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 2;
+  letter-spacing: 1.8px;
+  margin-bottom: 50px;
+}
+
+
+.contact-box {
+  /* 背景のグラデーション */
+  background: linear-gradient(90deg, #e8f9c4 0%, #d8f5f9 100%);
+  padding: 0px clamp(35px, 4vw, 70px);
+  border-radius: 17px;
+  text-align: center;
+  max-width: 600px;
+  font-family: sans-serif;
+  margin-bottom: clamp(20px, 3vw, 40px);
+}
+
+.contact-box:last-child {
+  margin-bottom: clamp(50px, 7vw, 90px);
+}
+
+.contact-text {
+  margin: 0 0 7px 0;
+  font-size: clamp(9px, 2vw, 19px);
+  color: var(--base-text);
+  text-align: left;
+  padding-top: clamp(17px, 4vw, 40px);
+  font-weight: bold;
+}
+
+.phone-number {
+  font-size: clamp(21px, 4vw, 42px);
+  font-weight: bold;
+  color: var(--base-text);
+  margin-bottom: 2px;
+  letter-spacing: 0.05em;
+}
+
+.reception-hours {
+  margin: 0;
+  font-size: clamp(7px, 2vw, 15px);
+  color: var(--base-text);
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+
+.form-button {
+  margin-top: clamp(0px, 3vw, 5px);
+  margin-bottom: clamp(20px, 3vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(10px, 2vw, 16px) clamp(20px, 4vw, 37px);
+  background-color: #fff;
+  /* 背景色：白 */
+  border: 2px solid #000;
+  /* 枠線：黒、太さ2px */
+  border-radius: 50px;
+  /* 大きな角丸 */
+  text-decoration: none;
+  /* 下線を消す */
+  color: #000;
+  /* 文字色：黒 */
+  font-weight: bold;
+  font-size: clamp(9px, 2vw, 20px);
+  transition: opacity 0.3s;
+}
+
+.form-button:hover {
+  opacity: 0.7;
+  /* ホバー時に少し透明にする */
+}
+
+.arrow {
+  margin-left: 6px;
+  color: #6a82fb;
+  /* 矢印の色：薄い青 */
+  font-size: 20px;
+}
 
 
 
@@ -811,26 +939,5 @@ body {
     margin-left: 0;
     margin-right: -10%;
   }
-  
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
